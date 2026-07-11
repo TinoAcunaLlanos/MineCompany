@@ -1,4 +1,4 @@
-/*
+
 package com.mine_company.controller;
 
 import com.mine_company.dto.PlantDTO;
@@ -9,6 +9,8 @@ import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,11 +30,17 @@ public class PlantController {
     private ModelMapper mapper;
 
     @GetMapping
-    public ResponseEntity<List<PlantDTO>> readAll() throws Exception{
-        List<PlantDTO> list = plantSerivce.readAll().stream()
-                            .map(plant -> mapper.map(plant, PlantDTO.class))
-                            .collect(Collectors.toList());
-        return new ResponseEntity<>(list, HttpStatus.OK);
+    public ResponseEntity<Page<PlantDTO>> readAll(PlantDTO filter, Pageable pageable) throws Exception{
+        Page<Plant> page = plantSerivce.search(
+                mapper.map(filter, Plant.class),
+                pageable
+        );
+
+        Page<PlantDTO> dtoPage = page.map(m ->
+                mapper.map(m, PlantDTO.class)
+        );
+
+        return ResponseEntity.ok(dtoPage);
     }
 
     @GetMapping("/{id}")
@@ -89,4 +97,4 @@ public class PlantController {
 
 }
 
- */
+

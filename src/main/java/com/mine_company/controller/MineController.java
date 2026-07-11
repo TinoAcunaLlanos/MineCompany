@@ -30,10 +30,7 @@ public class MineController {
     private ModelMapper mapper;
 
     @GetMapping
-    public ResponseEntity<Page<MineDTO>> search(
-            MineDTO filter,
-            Pageable pageable) throws Exception {
-        System.out.println(filter.getStatus());
+    public ResponseEntity<Page<MineDTO>> search (MineDTO filter, Pageable pageable) throws Exception {
         Page<Mine> page = mineSerivce.search(
                 mapper.map(filter, Mine.class),
                 pageable

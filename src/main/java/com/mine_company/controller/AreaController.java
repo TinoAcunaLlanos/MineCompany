@@ -1,14 +1,17 @@
-/*
 package com.mine_company.controller;
 
 import com.mine_company.dto.AreaDTO;
+import com.mine_company.dto.PlantDTO;
 import com.mine_company.entity.Area;
+import com.mine_company.entity.Plant;
 import com.mine_company.exception.ModelNotFoundException;
 import com.mine_company.service.IAreaService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,11 +31,17 @@ public class AreaController {
     private ModelMapper mapper;
 
     @GetMapping
-    public ResponseEntity<List<AreaDTO>> readAll() throws Exception{
-        List<AreaDTO> list = areaSerivce.readAll().stream()
-                            .map(area -> mapper.map(area, AreaDTO.class))
-                            .collect(Collectors.toList());
-        return new ResponseEntity<>(list, HttpStatus.OK);
+    public ResponseEntity<Page<AreaDTO>> readAll(AreaDTO filter, Pageable pageable) throws Exception{
+        Page<Plant> page = areaSerivce.search(
+                mapper.map(filter, Plant.class),
+                pageable
+        );
+
+        Page<PlantDTO> dtoPage = page.map(m ->
+                mapper.map(m, PlantDTO.class)
+        );
+
+        return ResponseEntity.ok(dtoPage);
     }
 
     @GetMapping("/{id}")
@@ -89,4 +98,3 @@ public class AreaController {
 
 }
 
- */

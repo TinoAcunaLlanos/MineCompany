@@ -7,7 +7,7 @@ import org.springframework.data.jpa.domain.Specification;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AreaSpecifications {
+public class AreaSpecification {
 
     public static Specification<Area> filter(Area filter){
 
