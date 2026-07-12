@@ -19,7 +19,7 @@ public class PlantSpecification {
                 predicates.add(
                         cb.like(
                                 cb.lower((root.get("name"))),
-                                "$" + filter.getName().toLowerCase() + "%"
+                                "%" + filter.getName().toLowerCase() + "%"
                         )
                 );
             }

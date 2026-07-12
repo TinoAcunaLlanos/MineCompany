@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 @RestController
 @RequestMapping("/industrialAsserts")
 public class IndustrialAssertController {
@@ -52,6 +54,7 @@ public class IndustrialAssertController {
 
     @PostMapping
     public ResponseEntity<IndustrialAssertDTO> create(@Valid @RequestBody IndustrialAssertDTO industrialAssert) throws Exception {
+        industrialAssert.setInstalledAt(LocalDateTime.now());
         IndustrialAssert obj =industrialAssertSerivce.create(mapper.map(industrialAssert, IndustrialAssert.class));
         return new ResponseEntity<>(mapper.map(obj, IndustrialAssertDTO.class), HttpStatus.CREATED);
     }
@@ -62,7 +65,7 @@ public class IndustrialAssertController {
         if(obj == null){
             throw new ModelNotFoundException("ID NOT FOUND" + dto.getId());
         }
-
+        dto.setModifiedAt(LocalDateTime.now());
         IndustrialAssert mine = industrialAssertSerivce.update(mapper.map(dto, IndustrialAssert.class));
         return new ResponseEntity<>(mapper.map(mine, IndustrialAssertDTO.class), HttpStatus.OK);
     }
@@ -74,6 +77,7 @@ public class IndustrialAssertController {
         if(obj == null){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
+        obj.setModifiedAt(LocalDateTime.now());
 
         obj.setStatus(false);
 
@@ -87,7 +91,7 @@ public class IndustrialAssertController {
         if(obj == null){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
-
+        obj.setModifiedAt(LocalDateTime.now());
         obj.setStatus(true);
 
         IndustrialAssert industrialAssert = industrialAssertSerivce.update(obj);

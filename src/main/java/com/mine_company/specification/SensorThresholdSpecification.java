@@ -1,7 +1,6 @@
 package com.mine_company.specification;
 
-import com.mine_company.dto.SensorDTO;
-import com.mine_company.entity.Sensor;
+import com.mine_company.entity.SensorThreshold;
 import jakarta.persistence.criteria.Predicate;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,21 +9,21 @@ import org.springframework.data.jpa.domain.Specification;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SensorSpecification {
+public class SensorThresholdSpecification {
 
-    @Qualifier("sensorMapper")
+    @Qualifier("industrialAssertMapper")
     private static ModelMapper mapper;
 
-    public static Specification<Sensor> filter(SensorDTO dto) {
+    public static Specification<SensorThreshold> filter(SensorThreshold dto) {
 
 
-        Sensor filter = mapper.map(dto, Sensor.class);
+        SensorThreshold filter = mapper.map(dto, SensorThreshold.class);
 
         return (root, query, cb) -> {
 
             List<Predicate> predicates = new ArrayList<>();
 
-            if (filter.getName() != null && !filter.getName().isBlank()) {
+            /*if (filter.getName() != null && !filter.getName().isBlank()) {
                 predicates.add(
                         cb.like(
                                 cb.lower((root.get("name"))),
@@ -33,20 +32,20 @@ public class SensorSpecification {
                 );
             }
 
-            if (filter.getIndustrialAssert().getId() != null) {
+            if (filter.getTypeAssert().getId() != null) {
                 predicates.add(
                         cb.like(
-                                cb.lower((root.get("idIndustrialAssert"))),
-                                "%" + filter.getIndustrialAssert().getId() + "%"
+                                cb.lower((root.get("idTypeAssert"))),
+                                "%" + filter.getTypeAssert().getId() + "%"
                         )
                 );
             }
 
-            if (filter.getTypeSensor().getId() != null) {
+            if (filter.getArea().getId() != null) {
                 predicates.add(
                         cb.like(
-                                cb.lower((root.get("idTypeSensor"))),
-                                "%" + filter.getTypeSensor().getId() + "%"
+                                cb.lower((root.get("idArea"))),
+                                "%" + filter.getArea().getId() + "%"
                         )
                 );
             }
@@ -103,7 +102,7 @@ public class SensorSpecification {
                                 dto.getDateTimeEnd()
                         )
                 );
-            }
+            }*/
 
             if (filter.getStatus() != null) {
                 predicates.add(
