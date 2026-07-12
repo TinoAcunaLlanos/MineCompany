@@ -1,11 +1,7 @@
 package com.mine_company.mapper;
 
-import com.mine_company.dto.AreaDTO;
-import com.mine_company.dto.IndustrialAssertDTO;
-import com.mine_company.dto.PlantDTO;
-import com.mine_company.entity.Area;
-import com.mine_company.entity.IndustrialAssert;
-import com.mine_company.entity.Plant;
+import com.mine_company.dto.*;
+import com.mine_company.entity.*;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
 import org.springframework.context.annotation.Bean;
@@ -35,7 +31,7 @@ public class MapperConfig {
         return mapper;
     }
 
-    @Bean("typeAssertmapper")
+    @Bean("typeAssertMapper")
     public ModelMapper typeAssert(){
         return new ModelMapper();
     }
@@ -46,6 +42,28 @@ public class MapperConfig {
         TypeMap<IndustrialAssertDTO, IndustrialAssert>typeMap =mapper.createTypeMap(IndustrialAssertDTO.class, IndustrialAssert.class);
         typeMap.addMapping(IndustrialAssertDTO::getIdTypeAssert, (dest, v)-> dest.getTypeAssert().setId((Integer) v));
         typeMap.addMapping(IndustrialAssertDTO::getIdArea, (dest, v)-> dest.getArea().setId((Integer) v));
+        return mapper;
+    }
+
+    @Bean("typeSensorMapper")
+    public ModelMapper typeSensor(){
+        return new ModelMapper();
+    }
+
+    @Bean("sensorMapper")
+    public ModelMapper sensorMapper(){
+        ModelMapper mapper = new ModelMapper();
+        TypeMap<SensorDTO, Sensor>typeMap =mapper.createTypeMap(SensorDTO.class, Sensor.class);
+        typeMap.addMapping(SensorDTO::getIdTypeSensor, (dest, v)-> dest.getTypeSensor().setId((Integer) v));
+        typeMap.addMapping(SensorDTO::getIdIndustrialAssert, (dest, v)-> dest.getIndustrialAssert().setId((Integer) v));
+        return mapper;
+    }
+
+    @Bean("SensorThresholdMapper")
+    public ModelMapper sensorThresholdMapper(){
+        ModelMapper mapper = new ModelMapper();
+        TypeMap<SensorThresholdDTO, SensorThreshold>typeMap =mapper.createTypeMap(SensorThresholdDTO.class, SensorThreshold.class);
+        typeMap.addMapping(SensorThresholdDTO::getIdSensor, (dest, v)-> dest.getSensor().setId((Integer)v));
         return mapper;
     }
 }

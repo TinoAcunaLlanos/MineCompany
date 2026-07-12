@@ -1,9 +1,7 @@
 package com.mine_company.controller;
 
 import com.mine_company.dto.AreaDTO;
-import com.mine_company.dto.PlantDTO;
 import com.mine_company.entity.Area;
-import com.mine_company.entity.Plant;
 import com.mine_company.exception.ModelNotFoundException;
 import com.mine_company.service.IAreaService;
 import jakarta.validation.Valid;
@@ -32,13 +30,13 @@ public class AreaController {
 
     @GetMapping
     public ResponseEntity<Page<AreaDTO>> readAll(AreaDTO filter, Pageable pageable) throws Exception{
-        Page<Plant> page = areaSerivce.search(
-                mapper.map(filter, Plant.class),
+        Page<Area> page = areaSerivce.search(
+                mapper.map(filter, Area.class),
                 pageable
         );
 
-        Page<PlantDTO> dtoPage = page.map(m ->
-                mapper.map(m, PlantDTO.class)
+        Page<AreaDTO> dtoPage = page.map(m ->
+                mapper.map(m, AreaDTO.class)
         );
 
         return ResponseEntity.ok(dtoPage);
