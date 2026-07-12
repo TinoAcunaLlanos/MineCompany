@@ -18,6 +18,7 @@ public class SensorDTO {
     private String serialNumber;
     private String description;
     private LocalDateTime installedAt;
+    private LocalDateTime modifiedAt;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private LocalDateTime dateTimeBegin;

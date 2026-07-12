@@ -16,14 +16,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/plants")
+@RequestMapping("/sensorThresholds")
 public class SensorThresholdController {
 
     @Autowired
     private ISensorThresholdService plantSerivce;
 
     @Autowired
-    @Qualifier("plantMapper")
+    @Qualifier("SensorThresholdMapper")
     private ModelMapper mapper;
 
     @GetMapping

@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 @RestController
 @RequestMapping("/sensors")
 public class SensorController {
@@ -52,6 +54,7 @@ public class SensorController {
 
     @PostMapping
     public ResponseEntity<SensorDTO> create(@Valid @RequestBody SensorDTO sensor) throws Exception {
+        sensor.setInstalledAt(LocalDateTime.now());
         Sensor obj =sensorSerivce.create(mapper.map(sensor, Sensor.class));
         return new ResponseEntity<>(mapper.map(obj, SensorDTO.class), HttpStatus.CREATED);
     }
@@ -62,6 +65,7 @@ public class SensorController {
         if(obj == null){
             throw new ModelNotFoundException("ID NOT FOUND" + dto.getId());
         }
+        obj.setModifiedAt(LocalDateTime.now());
 
         Sensor mine = sensorSerivce.update(mapper.map(dto, Sensor.class));
         return new ResponseEntity<>(mapper.map(mine, SensorDTO.class), HttpStatus.OK);
@@ -74,6 +78,7 @@ public class SensorController {
         if(obj == null){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
+        obj.setModifiedAt(LocalDateTime.now());
 
         obj.setStatus(false);
 
@@ -87,6 +92,7 @@ public class SensorController {
         if(obj == null){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
+        obj.setModifiedAt(LocalDateTime.now());
 
         obj.setStatus(true);
 

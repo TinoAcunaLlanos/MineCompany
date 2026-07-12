@@ -28,7 +28,7 @@ public class IndustrialAssertSpecification {
                 predicates.add(
                         cb.like(
                                 cb.lower((root.get("name"))),
-                                "$" + filter.getName().toLowerCase() + "%"
+                                "%" + filter.getName().toLowerCase() + "%"
                         )
                 );
             }
@@ -37,7 +37,7 @@ public class IndustrialAssertSpecification {
                 predicates.add(
                         cb.like(
                                 cb.lower((root.get("idTypeAssert"))),
-                                "$" + filter.getTypeAssert().getId() + "%"
+                                "%" + filter.getTypeAssert().getId() + "%"
                         )
                 );
             }
@@ -46,7 +46,7 @@ public class IndustrialAssertSpecification {
                 predicates.add(
                         cb.like(
                                 cb.lower((root.get("idArea"))),
-                                "$" + filter.getArea().getId() + "%"
+                                "%" + filter.getArea().getId() + "%"
                         )
                 );
             }
@@ -55,7 +55,7 @@ public class IndustrialAssertSpecification {
                 predicates.add(
                         cb.like(
                                 cb.lower((root.get("assetCode"))),
-                                "$" + filter.getAssetCode().toLowerCase() + "%"
+                                "%" + filter.getAssetCode().toLowerCase() + "%"
                         )
                 );
             }
@@ -64,7 +64,7 @@ public class IndustrialAssertSpecification {
                 predicates.add(
                         cb.like(
                                 cb.lower((root.get("assetCode"))),
-                                "$" + filter.getAssetCode().toLowerCase() + "%"
+                                "%" + filter.getAssetCode().toLowerCase() + "%"
                         )
                 );
             }
@@ -73,7 +73,7 @@ public class IndustrialAssertSpecification {
                 predicates.add(
                         cb.like(
                                 cb.lower((root.get("serialNumber"))),
-                                "$" + filter.getSerialNumber().toLowerCase() + "%"
+                                "%" + filter.getSerialNumber().toLowerCase() + "%"
                         )
                 );
             }
@@ -82,7 +82,7 @@ public class IndustrialAssertSpecification {
                 predicates.add(
                         cb.like(
                                 cb.lower((root.get("description"))),
-                                "$" + filter.getDescription().toLowerCase() + "%"
+                                "%" + filter.getDescription().toLowerCase() + "%"
                         )
                 );
             }
@@ -109,7 +109,7 @@ public class IndustrialAssertSpecification {
                 predicates.add(
                         cb.like(
                                 cb.lower((root.get("status"))),
-                                "$" + filter.getStatus() + "%"
+                                "%" + filter.getStatus() + "%"
                         )
                 );
             }

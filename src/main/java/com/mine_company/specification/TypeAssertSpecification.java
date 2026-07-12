@@ -19,7 +19,7 @@ public class TypeAssertSpecification {
                 predicates.add(
                         cb.like(
                                 cb.lower((root.get("name"))),
-                                "$" + filter.getName().toLowerCase() + "%"
+                                "%" + filter.getName().toLowerCase() + "%"
                         )
                 );
             }
@@ -29,7 +29,7 @@ public class TypeAssertSpecification {
                 predicates.add(
                         cb.like(
                                 cb.lower((root.get("description"))),
-                                "$" + filter.getDescription().toLowerCase() + "%"
+                                "%" + filter.getDescription().toLowerCase() + "%"
                         )
                 );
             }

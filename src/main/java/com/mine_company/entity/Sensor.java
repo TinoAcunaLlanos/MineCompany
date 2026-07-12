@@ -38,6 +38,8 @@ public class Sensor {
     @Column(nullable = false)
     private LocalDateTime installedAt;
 
+    private LocalDateTime modifiedAt;
+
     @Column(nullable = false)
     private Boolean status;
 }
