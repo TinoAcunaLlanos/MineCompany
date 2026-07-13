@@ -66,4 +66,12 @@ public class MapperConfig {
         typeMap.addMapping(SensorThresholdDTO::getIdSensor, (dest, v)-> dest.getSensor().setId((Integer)v));
         return mapper;
     }
+
+    @Bean("measurementMapper")
+    public ModelMapper measurementMapper(){
+        ModelMapper mapper = new ModelMapper();
+        TypeMap<MeasurementDTO, Measurement>typeMap =mapper.createTypeMap(MeasurementDTO.class, Measurement.class);
+        typeMap.addMapping(MeasurementDTO::getIdSensor, (dest, v)-> dest.getSensor().setId((Integer)v));
+        return mapper;
+    }
 }
