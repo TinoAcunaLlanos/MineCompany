@@ -16,8 +16,8 @@ public class Sensor {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "id_IndustrialAssert", nullable = false, foreignKey = @ForeignKey(name="FK_Sensor_IndustrialAssert"))
-    private IndustrialAssert industrialAssert;
+    @JoinColumn(name = "id_IndustrialAsset", nullable = false, foreignKey = @ForeignKey(name="FK_Sensor_IndustrialAsset"))
+    private IndustrialAsset industrialAsset;
 
     @ManyToOne
     @JoinColumn(name = "id_TypeSensor", nullable = false, foreignKey = @ForeignKey(name="FK_Sensor_TypeSensor"))

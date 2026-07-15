@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class SensorDTO {
 
     private Integer id;
-    private Integer idIndustrialAssert;
+    private Integer idIndustrialAsset;
     private Integer idTypeSensor;
     private String name;
     private String assetCode;

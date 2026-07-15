@@ -9,18 +9,18 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-public class IndustrialAssert {
+public class IndustrialAsset {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "id_TypeAssert", nullable = false, foreignKey = @ForeignKey(name="FK_IndustrialAssert_TypeAssert"))
-    private TypeAssert typeAssert;
+    @JoinColumn(name = "id_TypeAsset", nullable = false, foreignKey = @ForeignKey(name="FK_IndustrialAsset_TypeAsset"))
+    private TypeAsset typeAsset;
 
     @ManyToOne
-    @JoinColumn(name = "id_Area", nullable = false, foreignKey = @ForeignKey(name="FK_IndustrialAssert_Area"))
+    @JoinColumn(name = "id_Area", nullable = false, foreignKey = @ForeignKey(name="FK_IndustrialAsset_Area"))
     private Area area;
 
     @Column(length = 30, nullable = false)

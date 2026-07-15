@@ -11,7 +11,7 @@ import java.util.List;
 
 public class SensorThresholdSpecification {
 
-    @Qualifier("industrialAssertMapper")
+    @Qualifier("industrialAssetMapper")
     private static ModelMapper mapper;
 
     public static Specification<SensorThreshold> filter(SensorThreshold dto) {
@@ -32,11 +32,11 @@ public class SensorThresholdSpecification {
                 );
             }
 
-            if (filter.getTypeAssert().getId() != null) {
+            if (filter.getTypeAsset().getId() != null) {
                 predicates.add(
                         cb.like(
-                                cb.lower((root.get("idTypeAssert"))),
-                                "%" + filter.getTypeAssert().getId() + "%"
+                                cb.lower((root.get("idTypeAsset"))),
+                                "%" + filter.getTypeAsset().getId() + "%"
                         )
                 );
             }

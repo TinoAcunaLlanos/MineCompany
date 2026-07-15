@@ -61,21 +61,14 @@ public class MineController {
     @PutMapping
     public ResponseEntity<MineDTO> update(@Valid @RequestBody MineDTO dto) throws Exception{
         Mine obj = mineSerivce.readById(dto.getId());
-        if(obj == null){
-            throw new ModelNotFoundException("ID NOT FOUND" + dto.getId());
-        }
-
-        Mine mine = mineSerivce.update(mapper.map(dto, Mine.class));
+        mapper.map(dto, obj);
+        Mine mine = mineSerivce.update(obj);
         return new ResponseEntity<>(mapper.map(mine, MineDTO.class), HttpStatus.OK);
     }
 
     @PatchMapping("/{id}/disable")
     public ResponseEntity<MineDTO> disabled(@PathVariable Integer id) throws Exception{
         Mine obj = mineSerivce.readById(id);
-        if(obj == null){
-            throw new ModelNotFoundException("ID NOT FOUND: " + id);
-        }
-
         obj.setStatus(false);
 
         Mine mine = mineSerivce.update(obj);
@@ -85,10 +78,6 @@ public class MineController {
     @PatchMapping("/{id}/enable")
     public ResponseEntity<MineDTO> enabled(@PathVariable Integer id) throws Exception{
         Mine obj = mineSerivce.readById(id);
-        if(obj == null){
-            throw new ModelNotFoundException("ID NOT FOUND: " + id);
-        }
-
         obj.setStatus(true);
 
         Mine mine = mineSerivce.update(obj);

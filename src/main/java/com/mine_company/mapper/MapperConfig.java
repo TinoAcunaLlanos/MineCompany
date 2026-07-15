@@ -31,17 +31,17 @@ public class MapperConfig {
         return mapper;
     }
 
-    @Bean("typeAssertMapper")
-    public ModelMapper typeAssert(){
+    @Bean("typeAssetMapper")
+    public ModelMapper typeAsset(){
         return new ModelMapper();
     }
 
-    @Bean("industrialAssertMapper")
-    public ModelMapper industrialAssertMapper(){
+    @Bean("industrialAssetMapper")
+    public ModelMapper industrialAssetMapper(){
         ModelMapper mapper = new ModelMapper();
-        TypeMap<IndustrialAssertDTO, IndustrialAssert>typeMap =mapper.createTypeMap(IndustrialAssertDTO.class, IndustrialAssert.class);
-        typeMap.addMapping(IndustrialAssertDTO::getIdTypeAssert, (dest, v)-> dest.getTypeAssert().setId((Integer) v));
-        typeMap.addMapping(IndustrialAssertDTO::getIdArea, (dest, v)-> dest.getArea().setId((Integer) v));
+        TypeMap<IndustrialAssetDTO, IndustrialAsset>typeMap =mapper.createTypeMap(IndustrialAssetDTO.class, IndustrialAsset.class);
+        typeMap.addMapping(IndustrialAssetDTO::getIdTypeAsset, (dest, v)-> dest.getTypeAsset().setId((Integer) v));
+        typeMap.addMapping(IndustrialAssetDTO::getIdArea, (dest, v)-> dest.getArea().setId((Integer) v));
         return mapper;
     }
 
@@ -55,7 +55,7 @@ public class MapperConfig {
         ModelMapper mapper = new ModelMapper();
         TypeMap<SensorDTO, Sensor>typeMap =mapper.createTypeMap(SensorDTO.class, Sensor.class);
         typeMap.addMapping(SensorDTO::getIdTypeSensor, (dest, v)-> dest.getTypeSensor().setId((Integer) v));
-        typeMap.addMapping(SensorDTO::getIdIndustrialAssert, (dest, v)-> dest.getIndustrialAssert().setId((Integer) v));
+        typeMap.addMapping(SensorDTO::getIdIndustrialAsset, (dest, v)-> dest.getIndustrialAsset().setId((Integer) v));
         return mapper;
     }
 

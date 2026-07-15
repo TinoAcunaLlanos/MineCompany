@@ -33,11 +33,11 @@ public class SensorSpecification {
                 );
             }
 
-            if (filter.getIndustrialAssert().getId() != null) {
+            if (filter.getIndustrialAsset().getId() != null) {
                 predicates.add(
                         cb.like(
-                                cb.lower((root.get("idIndustrialAssert"))),
-                                "%" + filter.getIndustrialAssert().getId() + "%"
+                                cb.lower((root.get("idIndustrialAsset"))),
+                                "%" + filter.getIndustrialAsset().getId() + "%"
                         )
                 );
             }

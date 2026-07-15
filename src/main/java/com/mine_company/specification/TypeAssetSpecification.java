@@ -1,15 +1,15 @@
 package com.mine_company.specification;
 
-import com.mine_company.entity.TypeAssert;
+import com.mine_company.entity.TypeAsset;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TypeAssertSpecification {
+public class TypeAssetSpecification {
 
-    public static Specification<TypeAssert> filter(TypeAssert filter){
+    public static Specification<TypeAsset> filter(TypeAsset filter){
 
         return(root, query, cb) -> {
 

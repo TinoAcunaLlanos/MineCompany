@@ -1,7 +1,7 @@
 package com.mine_company.specification;
 
-import com.mine_company.dto.IndustrialAssertDTO;
-import com.mine_company.entity.IndustrialAssert;
+import com.mine_company.dto.IndustrialAssetDTO;
+import com.mine_company.entity.IndustrialAsset;
 import jakarta.persistence.criteria.Predicate;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,15 +10,15 @@ import org.springframework.data.jpa.domain.Specification;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IndustrialAssertSpecification {
+public class IndustrialAssetSpecification {
 
-    @Qualifier("industrialAssertMapper")
+    @Qualifier("industrialAssetMapper")
     private static ModelMapper mapper;
 
-    public static Specification<IndustrialAssert> filter(IndustrialAssertDTO dto) {
+    public static Specification<IndustrialAsset> filter(IndustrialAssetDTO dto) {
 
 
-        IndustrialAssert filter = mapper.map(dto, IndustrialAssert.class);
+        IndustrialAsset filter = mapper.map(dto, IndustrialAsset.class);
 
         return (root, query, cb) -> {
 
@@ -33,11 +33,11 @@ public class IndustrialAssertSpecification {
                 );
             }
 
-            if (filter.getTypeAssert().getId() != null) {
+            if (filter.getTypeAsset().getId() != null) {
                 predicates.add(
                         cb.like(
-                                cb.lower((root.get("idTypeAssert"))),
-                                "%" + filter.getTypeAssert().getId() + "%"
+                                cb.lower((root.get("idTypeAsset"))),
+                                "%" + filter.getTypeAsset().getId() + "%"
                         )
                 );
             }

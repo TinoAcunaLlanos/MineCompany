@@ -1,5 +1,6 @@
 package com.mine_company.service.impl;
 
+import com.mine_company.exception.ModelNotFoundException;
 import com.mine_company.repository.IGenericDao;
 import com.mine_company.service.IGenericService;
 
@@ -20,7 +21,9 @@ public abstract class GenericServiceImpl<T, ID> implements IGenericService<T, ID
 
     @Override
     public T readById(ID id) throws Exception{
-        return getRepo().findById(id).orElse(null);
+        return getRepo().findById(id).orElseThrow(
+                () -> new ModelNotFoundException("Resource not found with id:" + id)
+        );
     }
 
     @Override
