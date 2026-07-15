@@ -18,10 +18,10 @@ public class SensorThreshold {
     private Sensor sensor;
 
     @Column(nullable = false, columnDefinition = "decimal(10,2)")
-    private Integer minValue;
+    private Double minValue;
 
     @Column(nullable = false, columnDefinition = "decimal(10,2)")
-    private Integer maxValue;
+    private Double maxValue;
 
     @Column(nullable = false)
     private Boolean status;
