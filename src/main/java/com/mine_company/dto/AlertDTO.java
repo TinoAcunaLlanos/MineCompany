@@ -17,7 +17,9 @@ public class AlertDTO {
     private String description;
     private LocalDateTime createdAt;
     private LocalDateTime resolvedAt;
-    private LocalDateTime dateTimeBeginAt;
-    private LocalDateTime dateTimeEndAt;
+    private LocalDateTime dateTimeCreatedBeginAt;
+    private LocalDateTime dateTimeCreatedEndAt;
+    private LocalDateTime dateTimeResolvedBeginAt;
+    private LocalDateTime dateTimeResolvedEndAt;
     private AlertStatus status;
 }

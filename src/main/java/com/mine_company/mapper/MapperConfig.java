@@ -74,4 +74,12 @@ public class MapperConfig {
         typeMap.addMapping(MeasurementDTO::getIdSensor, (dest, v)-> dest.getSensor().setId((Integer)v));
         return mapper;
     }
+
+    @Bean("alertMapper")
+    public ModelMapper alertMapper(){
+        ModelMapper mapper = new ModelMapper();
+        TypeMap<AlertDTO, Alert>typeMap =mapper.createTypeMap(AlertDTO.class, Alert.class);
+        typeMap.addMapping(AlertDTO::getIdMeasurement, (dest, v)-> dest.getMeasurement().setId((Integer)v));
+        return mapper;
+    }
 }
